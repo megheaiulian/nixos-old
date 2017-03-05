@@ -109,14 +109,14 @@
 
    # virtualbox.host.enable = true;
   #};
-  
+
   programs = {
     tmux.enable = true;
     fish.enable = true;
   };
 
   users = {
-    users.defaultUserShell = "/run/current-system/sw/bin/fish";
+    defaultUserShell = "/run/current-system/sw/bin/fish";
     extraUsers.iulian = {
      isNormalUser = true;
      uid = 1000;
