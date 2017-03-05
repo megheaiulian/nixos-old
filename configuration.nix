@@ -11,9 +11,7 @@
     ];
   
   nixpkgs.config.allowUnfree = true;
-
-  fileSystems."/".options = ["noatime" "nodiratime" "discard"];
-
+  
   boot.loader = {
     grub = {
       enable = true;
@@ -29,8 +27,6 @@
     hostName = "plumone";
     nat = {
        enable = true;
-       externalInterface = "wlp1s0";
-       internalInterfaces = ["ve-+"]; 
     };
   };
 
@@ -123,7 +119,7 @@
      shell = "/run/current-system/sw/bin/fish";
      extraGroups = [ "wheel" "disk" "audio" "video" "networkmanager" "systemd-jgnurnal" "vboxusers"]; 	
     };
-    extraGroups.vboxusers.members = [ "iulian" ];
+    #extraGroups.vboxusers.members = [ "iulian" ];
   };
 
   # The NixOS release to be compatible with for stateful data such as databases.
