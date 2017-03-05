@@ -117,7 +117,8 @@
      isNormalUser = true;
      uid = 1000;
      shell = "/run/current-system/sw/bin/fish";
-     extraGroups = [ "wheel" "disk" "audio" "video" "networkmanager" "systemd-jgnurnal" "vboxusers"]; 	
+     extraGroups = [ "wheel" "disk" "audio" "video" "networkmanager" "systemd-jgnurnal" "vboxusers"];
+     initialPassword = 'iulian';
     };
     #extraGroups.vboxusers.members = [ "iulian" ];
   };
