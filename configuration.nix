@@ -118,9 +118,12 @@
      uid = 1000;
      shell = "/run/current-system/sw/bin/fish";
      extraGroups = [ "wheel" "disk" "audio" "video" "networkmanager" "systemd-jgnurnal" "vboxusers"];
-     initialPassword = 'iulian';
-    };
+     initialPassword = "iulian";
+123
     #extraGroups.vboxusers.members = [ "iulian" ];
+123
+    #extraGroups.vboxusers.members = [ "iulian" ];
+    };
   };
 
   # The NixOS release to be compatible with for stateful data such as databases.
