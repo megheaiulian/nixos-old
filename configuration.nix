@@ -12,7 +12,6 @@
     ];
 
   nixpkgs.config.allowUnfree = true;
-
   boot.loader = {
     grub = {
       enable = true;
@@ -24,25 +23,31 @@
     efi.canTouchEfiVariables = true;
   };
 
-  networking = {
-    hostName = "plumone";
-    bridges = {
-      lxcbr0 = { interfaces = []; };
-    };
-    interfaces = {
-      lxcbr0 = {
-        ip4 = [{
-          address = "192.168.100.1";
-          prefixLength = 24; }];
-      };
-    };
-    dhcpcd.denyInterfaces = ["veth*"];
-    nat = {
-      enable = true;
-      externalInterface  = "wlp1s0";
-      internalInterfaces = ["lxcbr0"];
-    };
-  };
+  #networking = {
+  #  hostName = "plumone";
+  #  bridges = {
+  #    lxcbr0 = { interfaces = []; };
+  #  };
+  #  interfaces = {
+  #    lxcbr0 = {
+  #      ip4 = [{
+  #        address = "192.168.100.1";
+  #        prefixLength = 24; }];
+  #    };
+  #  };
+  #  dhcpcd.denyInterfaces = ["veth*"];
+
+  #  nat = {
+  #    enable = true;
+  #    externalInterface  = "wlp1s0";
+  #    internalInterfaces = ["lxcbr0"];
+  #  };
+  #
+   # extraHosts = ''
+   #   192.168.100.110 sunova.local
+   #   192.168.100.111 moebel.local
+   # '';
+ # };
 
   i18n = {
     consoleFont = "Lat2-Terminus16";
@@ -71,10 +76,16 @@
     p7zip
     bridge-utils
     redir
+    pidgin
+    pidgin-skypeweb
+    gnome3.pidgin-im-gnome-shell-extension
   ];
 
   powerManagement.enable = true;
+  
   services.tlp.enable = true;
+  services.dnsmasq.enable = true;
+  
   services.xserver = {
     enable = true;
     layout = "us";
@@ -95,9 +106,6 @@
 
     xkbOptions = "eurosign:e";
   };
-
-  services.nfs.server.enable = true;
-  services.rpcbind.enable = true;
 
   virtualisation = {
     lxc = {
@@ -134,5 +142,5 @@
   };
 
   # The NixOS release to be compatible with for stateful data such as databases.
-  system.stateVersion = "16.09";
+  system.stateVersion = "17.03";
 }
