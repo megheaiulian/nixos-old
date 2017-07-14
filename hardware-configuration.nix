@@ -25,7 +25,7 @@
       ];
     };
   };
-  
+
   hardware = {
     cpu.intel.updateMicrocode = true;
     bluetooth.enable = false;
@@ -50,7 +50,7 @@
     ];
 
   nix.maxJobs = lib.mkDefault 4;
-  
+
   services.kmscon.enable = true;
   powerManagement.enable = true;
   #powerManagement.cpuFreqGovernor = "powersave";

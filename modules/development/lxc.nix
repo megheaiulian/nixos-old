@@ -7,9 +7,11 @@
      '';
    });
   })];
+
   environment.systemPackages = with pkgs; [
     dnsmasq
   ];
+
   #services = {
   #  dnsmasq.enable = false;
   #  dnsmasq.extraConfig = ''
@@ -19,27 +21,25 @@
   #    server=/local/10.0.3.1
   #  '';
   #};
+
   networking.networkmanager.insertNameservers = ["10.0.3.1"];
   virtualisation = {
     lxc = {
       enable = true;
       defaultConfig = ''
         lxc.aa_profile = unconfined
-	lxc.network.type = veth
-	lxc.network.link = lxcbr0
-	lxc.network.flags = up
+        lxc.network.type = veth
+        lxc.network.link = lxcbr0
+        lxc.network.flags = up
       '';
-      #usernetConfig = ''
-      #  iulian veth lxcbr0 10
-      #  root veth lxcbr0 10
-      #'';
     };
   };
 
   systemd.services.lxc-net = {
-    after = [ "network.target" "systemd-resolved.service" ];
-    wantedBy = [ "multi-user.target" ];
-    path = [ pkgs.dnsmasq pkgs.lxc pkgs.iproute pkgs.iptables pkgs.glibc];
+    after     = [ "network.target" "systemd-resolved.service" ];
+    wantedBy  = [ "multi-user.target" ];
+    path      = [ pkgs.dnsmasq pkgs.lxc pkgs.iproute pkgs.iptables pkgs.glibc];
+
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = "yes";
