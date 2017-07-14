@@ -8,7 +8,7 @@
 
   powerManagement = {
     enable = true;
-    cpuFreqGovernor = pkgs.lib.mkForce "powersave";
+    cpuFreqGovernor = pkgs.lib.mkForce "performance";
   };
 
   nixpkgs.overlays = [ (self: super: {
@@ -32,4 +32,13 @@
   ];
   # services.smartd.enable = true;
   fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
+
+  hardware = {
+    cpu.intel.updateMicrocode = true;
+    bluetooth.enable = false;
+    opengl.extraPackages = [ pkgs.vaapiIntel ];
+    pulseaudio = {
+      enable = true;
+    };
+  };
 }
