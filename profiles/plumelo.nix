@@ -4,6 +4,7 @@
     ../modules/desktops/gnome.nix
     ../modules/development/vagrant.nix
     ../modules/development/lxc.nix
+    ../modules/development/gitkraken.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -30,7 +31,6 @@
     p7zip
     wget
     git
-    gitkraken
     neovim
     atom
     slack
