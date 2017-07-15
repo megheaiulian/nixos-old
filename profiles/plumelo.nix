@@ -6,6 +6,7 @@
     ../modules/development/lxc.nix
     ../modules/development/gitkraken.nix
     ../modules/development/atom.nix
+    ../modules/development/vim/vim.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
