@@ -5,6 +5,7 @@
     ../modules/development/vagrant.nix
     ../modules/development/lxc.nix
     ../modules/development/gitkraken.nix
+    ../modules/development/atom.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -32,7 +33,6 @@
     wget
     git
     neovim
-    atom
     slack
     skype
     firefox
