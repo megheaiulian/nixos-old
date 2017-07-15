@@ -3,6 +3,7 @@
   imports = [
     ../modules/desktops/gnome.nix
     ../modules/development/vagrant.nix
+    ../modules/development/lxc.nix
   ];
 
   nixpkgs.config.allowUnfree = true;

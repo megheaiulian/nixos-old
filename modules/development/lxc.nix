@@ -1,26 +1,17 @@
 { config, lib, pkgs, ... }:
 {
-  nixpkgs.overlays = [( self: super: {
-   lxc = super.lxc.overrideAttrs(oldAttrs: rec {
-     postPatch = ''
-       sed -i '/chmod u+s/d' src/lxc/Makefile.am
-     '';
-   });
-  })];
+  environment.systemPackages = with pkgs; [ dnsmasq ];
 
-  environment.systemPackages = with pkgs; [
-    dnsmasq
-  ];
-
-  #services = {
-  #  dnsmasq.enable = false;
-  #  dnsmasq.extraConfig = ''
-  #    bind-interfaces
-  #    except-interface=lxcbr0
-  #    listen-address=127.0.0.1
-  #    server=/local/10.0.3.1
-  #  '';
-  #};
+  services.dnsmasq.extraConfig =
+    if config.services.dnsmasq.enable then
+      ''
+      bind-interfaces
+      except-interface=lxcbr0
+      listen-address=127.0.0.1
+      server=/local/10.0.3.1
+      ''
+    else
+      "";
 
   networking.networkmanager.insertNameservers = ["10.0.3.1"];
   virtualisation = {
@@ -34,6 +25,11 @@
       '';
     };
   };
+  environment.etc."default/lxc-net".text = ''
+    USE_LXC_BRIDGE="true"
+    LXC_DOMAIN=""
+    LXC_ADDR="10.0.3.1"
+  '';
 
   systemd.services.lxc-net = {
     after     = [ "network.target" "systemd-resolved.service" ];
@@ -41,10 +37,10 @@
     path      = [ pkgs.dnsmasq pkgs.lxc pkgs.iproute pkgs.iptables pkgs.glibc];
 
     serviceConfig = {
-      Type = "oneshot";
+      Type            = "oneshot";
       RemainAfterExit = "yes";
-      ExecStart = "${pkgs.lxc}/libexec/lxc/lxc-net start";
-      ExecStop  = "${pkgs.lxc}/libexec/lxc/lxc-net stop";
+      ExecStart       = "${pkgs.lxc}/libexec/lxc/lxc-net start";
+      ExecStop        = "${pkgs.lxc}/libexec/lxc/lxc-net stop";
     };
   };
 }
