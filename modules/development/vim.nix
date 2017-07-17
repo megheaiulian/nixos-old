@@ -7,6 +7,9 @@
         set expandtab
         set tabstop=2
         set softtabstop=2
+        if filereadable($HOME . "/.vimrc")
+          source ~/.vimrc
+        endif
       '';
     };
   })];
