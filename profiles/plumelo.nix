@@ -4,6 +4,7 @@
     ../modules/desktops/gnome.nix
     ../modules/development/vagrant.nix
     ../modules/development/lxc.nix
+    ../modules/development/lxd.nix
     ../modules/development/gitkraken.nix
     ../modules/development/atom.nix
     ../modules/development/vim.nix
