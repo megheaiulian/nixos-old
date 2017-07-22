@@ -27,6 +27,7 @@
   programs = {
     tmux.enable = true;
     fish.enable = true;
+    java.enable = true; 
   };
 
   environment.systemPackages = with pkgs; [
@@ -39,6 +40,8 @@
     skype
     firefox
     chromium
+    google-chrome
     lm_sensors
+    nodejs-7_x 
   ];
 }
