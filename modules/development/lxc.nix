@@ -25,9 +25,12 @@
       '';
     };
   };
+  environment.etc."default/lxc".text = ''
+    [ ! -f /etc/default/lxc-net ] || . /etc/default/lxc-net
+  '';
   environment.etc."default/lxc-net".text = ''
     USE_LXC_BRIDGE="true"
-    LXC_DOMAIN=""
+    LXC_DOMAIN="local"
     LXC_ADDR="10.0.3.1"
   '';
 
