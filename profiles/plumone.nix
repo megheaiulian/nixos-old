@@ -12,7 +12,7 @@
     users.iulian = {
       isNormalUser = true;
       uid = 1000;
-      extraGroups = ["wheel" "disk" "audio" "video" "networkmanager" "systemd-journal" ];
+      extraGroups = ["wheel" "disk" "audio" "video" "networkmanager" "systemd-journal" "lxd" ];
       initialPassword = "iulian";
     };
   };
