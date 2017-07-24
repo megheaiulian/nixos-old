@@ -44,5 +44,6 @@
     google-chrome
     lm_sensors
     nodejs-7_x 
+    libreoffice-fresh
   ];
 }

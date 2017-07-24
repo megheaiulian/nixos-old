@@ -31,18 +31,17 @@
   })];
   
   # This doesn't seem to work
-  #security.apparmor = {
-  #  enable = true;
-  #  profiles = [
-  #    "${pkgs.lxc}/etc/apparmor.d/usr.bin.lxc-star" 
-  #    "${pkgs.lxc}/etc/apparmor.d/lxc-containers"
-  #  ];
-  #  packages = [ pkgs.lxc ];
-  #};
+  security.apparmor = {
+    enable = true;
+    profiles = [
+      "${pkgs.lxc}/etc/apparmor.d/usr.bin.lxc-star"
+      "${pkgs.lxc}/etc/apparmor.d/lxc-containers"
+    ];
+    packages = [ pkgs.lxc ];
+  };
 
   virtualisation.lxd.enable = true;
   systemd.services.lxd.path = with pkgs; [ gzip dnsmasq squashfsTools iproute iptables ];
-  networking.networkmanager.insertNameservers = ["10.0.4.1"]; 
   # After install run: 
   # lxc profile set default raw.lxc lxc.aa_allow_incomplete=1
   # sudo lxc network set lxdbr0 ipv4.address 10.0.4.1/24 

@@ -1,19 +1,21 @@
 { config, lib, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [ dnsmasq ];
-
+  services.dnsmasq.enable = true;
   services.dnsmasq.extraConfig =
     if config.services.dnsmasq.enable then
       ''
       bind-interfaces
       except-interface=lxcbr0
+      except-interface=lxdbr0
       listen-address=127.0.0.1
       server=/local/10.0.3.1
+      server=/lxd/10.0.4.1
       ''
     else
       "";
 
-  networking.networkmanager.insertNameservers = ["10.0.3.1"];
+  networking.networkmanager.insertNameservers = ["127.0.0.1"];
   virtualisation = {
     lxc = {
       enable = true;
