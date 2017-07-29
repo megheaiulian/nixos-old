@@ -45,5 +45,8 @@
     lm_sensors
     nodejs-7_x 
     libreoffice-fresh
+    python35Packages.mps-youtube
+    python35Packages.youtube-dl
+    mpv
   ];
 }
