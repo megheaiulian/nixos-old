@@ -41,7 +41,7 @@
     skype
     firefox
     chromium
-    google-chrome
+    #google-chrome
     lm_sensors
     nodejs-7_x 
     libreoffice-fresh
