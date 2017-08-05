@@ -16,7 +16,8 @@
       initialPassword = "iulian";
     };
   };
-  
+
+  networking.firewall.allowedTCPPorts = [9988];
   environment.systemPackages = with pkgs; [
     transmission_gtk
     comical
