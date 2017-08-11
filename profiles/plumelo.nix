@@ -48,5 +48,6 @@
     python35Packages.mps-youtube
     python35Packages.youtube-dl
     mpv
+    ruby
   ];
 }
