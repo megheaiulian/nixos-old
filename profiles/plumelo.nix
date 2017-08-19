@@ -49,5 +49,6 @@
     python35Packages.youtube-dl
     mpv
     ruby
+    xsel
   ];
 }
