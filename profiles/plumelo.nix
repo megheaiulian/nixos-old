@@ -9,6 +9,7 @@
     ../modules/development/atom.nix
     ../modules/development/vim.nix
     #../modules/development/tilix/tilix.nix
+    #../modules/desktops/sway.nix
   ];
 
   nixpkgs.config.allowUnfree = true;

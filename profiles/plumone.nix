@@ -23,4 +23,14 @@
     comical
     lastpass-cli
   ];
+  
+  #swapDevices = [{
+  #  size      = 2048;
+  #  priority  = 5; 
+  #}];
+  
+  zramSwap = {
+    enable    = true;
+    priority  = 6;
+  };
 }
