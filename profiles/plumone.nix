@@ -3,6 +3,7 @@
   imports = [
     ./plumelo.nix
     ../devices/yoga2-pro.nix
+    ../modules/development/upwork.nix
   ];
 
   networking.hostName = "plumone";
