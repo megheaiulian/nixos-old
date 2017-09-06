@@ -11,22 +11,20 @@
       };
 
       libPath = super.stdenv.lib.makeLibraryPath [
-        super.stdenv.cc.cc.lib
         super.curl
-        super.udev
         super.alsaLib
         super.xorg.libX11
         super.xorg.libXext
         super.xorg.libXcursor
         super.xorg.libXi
         super.glib
+        super.udev
         super.xorg.libXScrnSaver
         super.xorg.libxkbfile
         super.xorg.libXtst
         super.nss
         super.nspr
         super.cups
-        super.alsaLib
         super.expat
         super.gdk_pixbuf
         super.dbus
@@ -43,51 +41,25 @@
         super.gtk2
         super.gnome2.GConf
         super.gnome2.gtkglext
-        super.libgnome_keyring
         super.mesa
         super.xorg.libXinerama
-        super.nss
-      ];
-      
-      nativeBuildInputs = [ super.makeWrapper ];
-      dontBuild = true;
-      
-      desktopItem = super.makeDesktopItem {
-        name = "upwork";
-        exec = "upwork";
-        icon = "app";
-        desktopName = "UpWork";
-        genericName = "UpWork";
-        categories = "Application;Development;";
-        comment = "UpWork client";
-      }; 
+      ] + ":${super.stdenv.cc.cc.lib}/lib64";
 
       buildInputs = [ super.dpkg ];
-      unpackPhase = "dpkg-deb -x $src .";
-      
-      installPhase = ''
-        mkdir -p "$out/opt/upwork"
-        cp -r usr/share/upwork/* "$out/opt/upwork"
-        mkdir -p "$out/share/applications"
-        cp $desktopItem/share/applications/* "$out/share/applications"
-        mkdir -p "$out/share/pixmaps"
-        cp usr/share/pixmaps/upwork.png "$out/share/pixmaps"
-      '';
-      postFixup = ''
+      unpackPhase = "true";
+      buildCommand = ''
+        mkdir -p $out
+        dpkg -x $src $out
+        cp -av $out/usr/* $out
+        rm -rf $out/etc $out/usr $out/share/lintian
+        chmod -R g-w $out
+
         for file in $(find $out -type f \( -perm /0111 -o -name \*.so\* \) ); do
           patchelf --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" "$file" || true
-          patchelf --set-rpath ${libPath}:$out/opt/upwork $file || true
-        done 
-        wrapProgram $out/opt/upwork/upwork \
-          --prefix LD_PRELOAD : "${super.stdenv.lib.makeLibraryPath [ super.curl ]}/libcurl.so.4" \
-          --prefix LD_PRELOAD : "${super.stdenv.lib.makeLibraryPath [ super.libgnome_keyring ]}/libgnome-keyring.so.0" \
-          --prefix LD_PRELOAD : "${super.stdenv.lib.makeLibraryPath [ super.mesa ]}/libGLU.so.1" \
-          --prefix LD_PRELOAD : "${super.stdenv.lib.makeLibraryPath [super.nss ]}/libnssutil3.so" \
-          --prefix LD_PRELOAD : "${super.stdenv.lib.makeLibraryPath [super.nss ]}/libsmime3.so" \
-          --prefix LD_PRELOAD : "${super.stdenv.lib.makeLibraryPath [super.gnome2.GConf ]}/libgconf-2.so.4" \
-          --prefix LD_PRELOAD : "${super.stdenv.lib.makeLibraryPath [super.alsaLib ]}/libasound.so.2"
-        mkdir "$out/bin"
-        ln -s "$out/opt/upwork/upwork" "$out/bin/upwork"
+          patchelf --set-rpath ${libPath}:$out/share/upwork $file || true
+        done
+        rm $out/bin/upwork
+        ln -s $out/share/upwork/upwork $out/bin/upwork
       '';
 
       meta = {
@@ -96,7 +68,9 @@
     };
   })];
   
+  services.dbus.packages = with pkgs; [ gnome2.GConf upwork ];
   environment.systemPackages = with pkgs; [
+    gnome2.GConf
     upwork
   ]; 
 } 
