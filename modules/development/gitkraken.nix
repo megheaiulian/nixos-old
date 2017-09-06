@@ -2,12 +2,12 @@
 {
   nixpkgs.overlays = [( self: super: {
     gitkraken = super.gitkraken.overrideAttrs(oldAttrs: rec {
-      version = "2.7.0";
+      version = "2.7.1";
       name    = "gitkraken-${version}";
 
       src = super.fetchurl {
         url = "https://release.gitkraken.com/linux/v${version}.deb";
-        sha256 = "0088vdn47563f0v9zhk1vggn3c2cfg8rhmifc6nw4zbss49si5gp";
+        sha256 = "1jv55k493h604rd7vgv5z29aa9fqgrgffmam1vaapbbrwvbxjici";
       };
 
       desktopItem = super.makeDesktopItem {
