@@ -54,11 +54,14 @@
         super.gnome2.GConf
         super.libgnome_keyring
       ];
+      
       buildInputs = [ super.dpkg ];
       unpackPhase = "true";
       buildCommand = ''
         mkdir -p $out
         dpkg -x $src $out
+        substituteInPlace $out/usr/share/applications/gitkraken.desktop \
+          --replace /usr/share/gitkraken $out/bin
         cp -av $out/usr/* $out
         rm -rf $out/etc $out/usr $out/share/lintian
         chmod -R g-w $out
