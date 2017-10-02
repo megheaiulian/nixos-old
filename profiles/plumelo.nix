@@ -43,7 +43,7 @@
     chromium
     google-chrome
     lm_sensors
-    nodejs-7_x 
+    nodejs
     libreoffice-fresh
     python35Packages.mps-youtube
     python35Packages.youtube-dl

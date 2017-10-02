@@ -41,7 +41,7 @@
   };
 
   virtualisation.lxd.enable = true;
-  systemd.services.lxd.path = with pkgs; [ gzip dnsmasq squashfsTools iproute iptables ];
+  #systemd.services.lxd.path = with pkgs; [ gzip dnsmasq squashfsTools iproute iptables ];
   # After install run: 
   # lxc profile set default raw.lxc lxc.aa_allow_incomplete=1
   # sudo lxc network set lxdbr0 ipv4.address 10.0.4.1/24 
