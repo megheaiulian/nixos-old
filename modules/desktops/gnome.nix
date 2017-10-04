@@ -12,6 +12,7 @@
     xkbOptions = "eurosign:e";
 
     displayManager.gdm.enable = true;
+    displayManager.gdm.wayland = true;
     desktopManager = {
       kodi.enable = true;
       gnome3.enable = true;
@@ -25,9 +26,4 @@
     #gnome-keyring.enable = pkgs.lib.mkForce false;
     #evolution-data-server.enable = pkgs.lib.mkForce false;
   };
-
-  environment.etc."gdm/custom.conf".text = ''
-    [daemon]
-    WaylandEnable="true"
-  '';
 }

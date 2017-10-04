@@ -39,6 +39,7 @@
     git
     slack
     skype
+    skypeforlinux
     firefox
     chromium
     google-chrome
@@ -50,5 +51,6 @@
     mpv
     ruby
     xsel
+    tilix
   ];
 }
