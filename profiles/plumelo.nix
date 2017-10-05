@@ -8,7 +8,6 @@
     ../modules/development/gitkraken.nix
     ../modules/development/atom.nix
     ../modules/development/vim.nix
-    #../modules/development/tilix/tilix.nix
     #../modules/desktops/sway.nix
   ];
 
@@ -38,7 +37,6 @@
     wget
     git
     slack
-    skype
     skypeforlinux
     firefox
     chromium
