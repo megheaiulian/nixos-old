@@ -23,7 +23,6 @@
     gnome-documents.enable = false;
     gnome-user-share.enable = false;
     gnome-online-miners.enable = false;
-    #gnome-keyring.enable = pkgs.lib.mkForce false;
-    #evolution-data-server.enable = pkgs.lib.mkForce false;
+    gnome-keyring.enable = true; 
   };
 }
