@@ -8,7 +8,7 @@
     ../modules/development/gitkraken.nix
     ../modules/development/hyper.nix
     ../modules/development/vim.nix
-    #../modules/desktops/sway.nix
+    ../modules/development/tilix.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -49,7 +49,6 @@
     mpv
     ruby
     xsel
-    tilix
     atom
   ];
 }
