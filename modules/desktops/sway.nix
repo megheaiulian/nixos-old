@@ -1,17 +1,40 @@
 { config, lib, pkgs, ... }:
 {
+  let
+    xwaylandPatch = fetchpatch {
+      url = "https://github.com/Cloudef/wlc/commit/a130f6006560fb8ac02fb59a90ced1659563f9ca.diff";
+     sha256 = "0kzcbqklcyg8bganm65di8cif6dpc8bkrsvkjia09kr92lymxm2c";
+    };
+
   nixpkgs.overlays = [( self: super: {
     wlcc = super.wlc.overrideAttrs(oldAttrs: rec {
+      inherit super;
       name = "wlc-${version}";
       version = "0.0.10";
 
-      src = super.fetchFromGitHub {
+      src = fetchFromGitHub {
         owner = "Cloudef";
         repo = "wlc";
-        rev = "b730074e42f4fb31b8bec51ea29eea32575f14c0";
-        sha256 = "1r6jf64gs7n9a8129wsc0mdwhcv44p8k87kg0714rhx3g2w22asg";
+        rev = "v${version}";
         fetchSubmodules = true;
-       };
+        sha256 = "09kvwhrpgkxlagn9lgqxc80jbg56djn29a6z0n6h0dsm90ysyb2k";
+      };
+
+      patches = [
+        xwaylandPatch
+      ];
+
+      nativeBuildInputs = [ cmake pkgconfig ];
+
+      buildInputs = [
+        wayland pixman libxkbcommon libinput xcbutilwm xcbutilimage mesa_noglu
+        libX11 dbus_libs wayland-protocols
+        libpthreadstubs libXdmcp libXext ]
+        ++ stdenv.lib.optionals withOptionalPackages [ zlib valgrind doxygen ];
+
+      doCheck = true;
+      checkTarget = "test";
+      enableParallelBuilding = true;    
     });
 
     swaywm = super.sway.overrideAttrs(oldAttrs: rec {

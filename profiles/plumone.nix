@@ -4,6 +4,7 @@
     ./plumelo.nix
     ../devices/yoga2-pro.nix
     ../modules/development/upwork.nix
+    ../modules/desktops/sway/index.nix
   ];
 
   networking.hostName = "plumone";
@@ -16,7 +17,7 @@
     users.iulian = {
       isNormalUser = true;
       uid = 1000;
-      extraGroups = ["iulian" "wheel" "disk" "audio" "video" "networkmanager" "systemd-journal" "lxd" ];
+      extraGroups = ["iulian" "wheel" "disk" "audio" "video" "networkmanager" "systemd-journal" "lxd" "sway"];
       initialPassword = "iulian";
     };
   };
@@ -24,6 +25,7 @@
   environment.systemPackages = with pkgs; [
     transmission_gtk
     lastpass-cli
+    epiphany
   ];
   
   zramSwap = {

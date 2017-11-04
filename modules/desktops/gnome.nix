@@ -12,10 +12,9 @@
     xkbOptions = "eurosign:e";
 
     displayManager.gdm.enable = true;
-    displayManager.gdm.wayland = true;
     desktopManager = {
-      kodi.enable = true;
       gnome3.enable = true;
+      kodi.enable = true; 
     };
   };
   
