@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 let 
-  buildDocs = false;
+  buildDocs = true;
 in
 {
   nixpkgs.overlays = [( self: super: {

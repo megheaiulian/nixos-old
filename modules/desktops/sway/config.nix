@@ -24,6 +24,8 @@ let
     xwayland 
     rxvt_unicode
     dmenu 
+    i3blocks
+    acpi
     paper-gtk-theme
     paper-icon-theme
     gnome3.gnome-disk-utility 
@@ -65,5 +67,6 @@ in
     enable = true;
     naturalScrolling = true;
   }; 
+  hardware.pulseaudio.enable = true;
 } 
 
