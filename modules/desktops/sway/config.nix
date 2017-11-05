@@ -25,7 +25,7 @@ let
     rxvt_unicode
     dmenu 
     i3blocks
-    acpi
+    brightnessctl
     paper-gtk-theme
     paper-icon-theme
     gnome3.gnome-disk-utility 
@@ -68,5 +68,9 @@ in
     naturalScrolling = true;
   }; 
   hardware.pulseaudio.enable = true;
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="backlight", RUN+="/run/current-system/sw/bin/chgrp video /sys/class/backlight/%k/brightness"
+    ACTION=="add", SUBSYSTEM=="backlight", RUN+="/run/current-system/sw/bin/chmod g+w /sys/class/backlight/%k/brightness"
+  '';
 } 
 
