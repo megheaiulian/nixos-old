@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 {
   imports = [
-   # ../modules/desktops/gnome.nix
+    ../modules/desktops/gnome.nix
     ../modules/development/vagrant.nix
     ../modules/development/lxc.nix
     ../modules/development/lxd/lxd.nix
@@ -50,6 +50,5 @@
     ruby
     xsel
     atom
-    alacritty 
-  ];
+    ];
 }

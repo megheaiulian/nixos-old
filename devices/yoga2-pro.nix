@@ -4,7 +4,7 @@
     blacklistedKernelModules = ["ideapad-laptop"];
   };
 
-  services.kmscon.enable = true;
+  #services.kmscon.enable = true;
 
   powerManagement = {
     enable = true;
