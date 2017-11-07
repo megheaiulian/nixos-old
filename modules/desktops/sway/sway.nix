@@ -6,13 +6,13 @@ in
   nixpkgs.overlays = [( self: super: {
     sway = with super; stdenv.mkDerivation rec {
       name = "sway-${version}";
-      version = "0.14.0";
+      version = "0.15-rc4";
 
       src = fetchFromGitHub {
         owner = "Sircmpwn";
         repo = "sway";
         rev = "${version}";
-        sha256 = "1l8v9cdzd44bm4q71d47vqg6933b8j42q1a61r362vz2la1rcpq2";
+        sha256 = "0m14k5xdix9wiajmp9vnm24m9ci2dha0bf69v0xgjqn6mydvvrri";
       };
 
       nativeBuildInputs = [
@@ -21,6 +21,7 @@ in
       buildInputs = [
         wayland pkgs.wlcc libxkbcommon pcre json_c dbus_libs
         pango cairo libinput libcap pam gdk_pixbuf xorg.libpthreadstubs
+        libsecret
         xorg.libXdmcp
       ];
 
