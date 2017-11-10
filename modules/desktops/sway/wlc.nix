@@ -10,19 +10,19 @@ in
   nixpkgs.overlays = [( self: super: {
     wlcc = with super; stdenv.mkDerivation rec {
       name = "wlc-${version}";
-      version = "0.0.10";
+      version = "0.0.11";
 
       src = fetchFromGitHub {
         owner = "Cloudef";
         repo = "wlc";
         rev = "v${version}";
         fetchSubmodules = true;
-        sha256 = "09kvwhrpgkxlagn9lgqxc80jbg56djn29a6z0n6h0dsm90ysyb2k";
+        sha256 = "1qnak907gjd35hq4b0rrhgb7kz5iwnirh8yk372yzxpgk7dq0gz9";
       };
 
-      patches = [
-        xwaylandPatch
-      ];
+      #patches = [
+      #  xwaylandPatch
+      #];
 
       nativeBuildInputs = [ cmake pkgconfig ];
 
