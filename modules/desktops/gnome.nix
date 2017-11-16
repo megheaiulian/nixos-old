@@ -4,6 +4,8 @@
     paper-gtk-theme
     paper-icon-theme
     gnome3.gnome-disk-utility
+    arc-theme
+    arc-icon-theme
   ];
 
   services.xserver = {
