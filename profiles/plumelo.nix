@@ -6,6 +6,7 @@
     ../modules/development/lxc.nix
     ../modules/development/lxd/lxd.nix
     ../modules/development/gitkraken.nix
+    ../modules/development/atom.nix
     ../modules/development/hyper.nix
     ../modules/development/vim.nix
     ../modules/development/tilix.nix
