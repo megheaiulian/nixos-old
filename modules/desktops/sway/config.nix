@@ -30,6 +30,7 @@ let
     paper-icon-theme
     gnome3.gnome-disk-utility
     alacritty
+    gnome3.dconf-editor
   ];
 
 in
@@ -50,24 +51,10 @@ in
   fonts.enableDefaultFonts = mkDefault true;
 
   services.xserver = {
-    #enable = true;
-    #layout = "us";
-    #xkbOptions = "eurosign:e";
-  
-    #displayManager.sddm = {
-    #  enable = true;
-    #  extraConfig =  ''
-    #    [WaylandDisplay]
-    #    EnableHiDPI=true
-    #    SessionCommand=${pkgs.sddm}/share/sddm/scripts/wayland-session
-    #    SessionDir=${pkgs.sway}/share/wayland-sessions
-    #  '';
-    #};
-
     desktopManager.session = [{
       name  = "sway";
       start = ''
-        # export GDK_BACKEND=wayland
+        export GDK_BACKEND=wayland
         # export GDK_SCALE=2
         # export GDK_DPI_SCALE=0.5
         sway -d 2> ~/sway.log & waitPID=$!
@@ -80,11 +67,11 @@ in
     enable = true;
     naturalScrolling = true;
   }; 
-  #hardware.pulseaudio.enable = true;
-
   services.udev.extraRules = ''
     ACTION=="add", SUBSYSTEM=="backlight", RUN+="/run/current-system/sw/bin/chgrp video /sys/class/backlight/%k/brightness"
     ACTION=="add", SUBSYSTEM=="backlight", RUN+="/run/current-system/sw/bin/chmod g+w /sys/class/backlight/%k/brightness"
   '';
+  
+  services.dbus.packages = with pkgs; [ gnome3.dconf ];
 } 
 
