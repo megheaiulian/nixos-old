@@ -26,6 +26,7 @@
     transmission_gtk
     lastpass-cli
     epiphany
+    ntfs3g
   ];
   
   zramSwap = {
