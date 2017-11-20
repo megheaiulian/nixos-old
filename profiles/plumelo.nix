@@ -41,6 +41,7 @@
     firefox
     chromium
     google-chrome
+    chromedriver
     lm_sensors
     nodejs
     libreoffice-fresh
