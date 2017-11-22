@@ -2,10 +2,8 @@
 {
   powerManagement = {
     enable = true;
-    cpuFreqGovernor = pkgs.lib.mkForce "performance";
   };
   boot.initrd.availableKernelModules = ["hid-logitech-hidpp"];
-  # services.smartd.enable = true;
   fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
 
   hardware = {
