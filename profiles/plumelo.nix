@@ -51,5 +51,7 @@
     ruby
     xsel
     atom
+    parted
+    gptfdisk
     ];
 }
