@@ -9,6 +9,7 @@
     ../modules/development/atom.nix
     ../modules/development/vim.nix
     ../modules/development/tilix.nix
+    ../modules/apps/skype.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -37,7 +38,6 @@
     wget
     git
     slack
-    skypeforlinux
     firefox
     chromium
     google-chrome
