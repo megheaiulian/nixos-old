@@ -10,12 +10,12 @@
       gnutlsSupport = true;
     };
     gitkraken = super.gitkraken.overrideAttrs(oldAttrs: rec {
-      version = "3.2.2";
+      version = "3.3.0";
       name    = "gitkraken-${version}";
 
       src = super.fetchurl {
         url = "https://release.gitkraken.com/linux/v${version}.deb";
-        sha256 = "0fs04z89dlsy8chvkp56y23gh8cfrzb814acgi8576j9fzpqm7rp";
+        sha256 = "0gmhc4jisgsbyg3f8p4mi5bim8lhcc4rw4clw4azfq6j9z361zp0";
       };
     
       libPath = super.stdenv.lib.makeLibraryPath [

@@ -47,6 +47,7 @@
     libreoffice-fresh
     python35Packages.mps-youtube
     python35Packages.youtube-dl
+    cava
     mpv
     ruby
     xsel
