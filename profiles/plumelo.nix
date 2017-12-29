@@ -6,7 +6,6 @@
     ../modules/development/lxc.nix
     ../modules/development/lxd/lxd.nix
     ../modules/development/gitkraken.nix
-    ../modules/development/atom.nix
     ../modules/development/vim.nix
     ../modules/development/tilix.nix
     ../modules/apps/skype.nix
@@ -54,5 +53,7 @@
     atom
     parted
     gptfdisk
+    unoconv
+    atom
     ];
 }
