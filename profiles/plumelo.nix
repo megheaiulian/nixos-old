@@ -28,7 +28,7 @@
   programs = {
     tmux.enable = true;
     fish.enable = true;
-    java.enable = true; 
+    java.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
@@ -55,5 +55,6 @@
     gptfdisk
     unoconv
     atom
+    ag
     ];
 }

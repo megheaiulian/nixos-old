@@ -27,7 +27,7 @@
     lastpass-cli
     epiphany
   ];
-  
+
   zramSwap = {
     enable    = true;
     priority  = 6;

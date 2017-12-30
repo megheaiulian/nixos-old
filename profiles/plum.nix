@@ -28,7 +28,7 @@
     epiphany
     ntfs3g
   ];
-  
+
   zramSwap = {
     enable    = true;
     priority  = 6;
