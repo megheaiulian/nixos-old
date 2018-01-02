@@ -9,10 +9,10 @@
         repo = "tilix";
         rev = "${version}";
         sha256 = "0x0bnb26hjvxmvvd7c9k8fw97gcm3z5ssr6r8x90xbyyw6h58hhh";
-      };       
+      };
     });
   })];
-    
+
   environment.systemPackages = with pkgs; [
     tilix
   ];

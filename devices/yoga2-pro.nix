@@ -4,8 +4,6 @@
     blacklistedKernelModules = ["ideapad-laptop"];
   };
 
-  #services.kmscon.enable = true;
-
   powerManagement = {
     enable = true;
     cpuFreqGovernor = pkgs.lib.mkForce "performance";
@@ -37,6 +35,7 @@
     smartmontools
     gsmartcontrol
   ];
+
   # services.smartd.enable = true;
   fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
 

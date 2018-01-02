@@ -17,7 +17,7 @@
         url = "https://release.gitkraken.com/linux/v${version}.deb";
         sha256 = "01gclsnxvp2b619dkrbh4l9qmjwpmf1w9nlsdawapzvc4aay195s";
       };
-    
+
       libPath = super.stdenv.lib.makeLibraryPath [
         super.stdenv.cc.cc.lib
         self.gkCurl
@@ -54,7 +54,7 @@
         super.gnome2.GConf
         super.libgnome_keyring
       ];
-      
+
       buildInputs = [ super.dpkg ];
       unpackPhase = "true";
       buildCommand = ''
@@ -70,13 +70,13 @@
           patchelf --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" "$file" || true
           patchelf --set-rpath ${libPath}:$out/share/gitkraken $file || true
         done
-        
+
         find $out/share/gitkraken -name "*.node" -exec patchelf --set-rpath "${libPath}:$out/share/gitkraken" {} \; 
-        
+
         rm $out/bin/gitkraken
         ln -s $out/share/gitkraken/gitkraken $out/bin/gitkraken
       '';
-      }); 
+      });
    })];
 
   environment.systemPackages = with pkgs; [

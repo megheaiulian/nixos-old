@@ -3,11 +3,26 @@
   powerManagement = {
     enable = true;
   };
-  boot.initrd.availableKernelModules = ["hid-logitech-hidpp"];
-  fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
-  boot.kernelPackages = pkgs.linuxPackages_testing;
-  boot.kernelParams = ["amdgpu.dc=1"];
-  boot.kernelModules = ["amdgpu-pro" "coretemp" ];
+
+  fileSystems."/".options = [
+    "noatime"
+    "nodiratime"
+  ];
+
+  boot = {
+    initrd.availableKernelModules = [
+      "hid-logitech-hidpp"
+    ];
+    kernelPackages =  pkgs.linuxPackages_testing;
+    kernelParams = [
+      "amdgpu.dc=1"
+    ];
+    kernelModules = [
+      "amdgpu-pro"
+      "coretemp"
+    ];
+  };
+
   hardware = {
     cpu.intel.updateMicrocode = true;
     bluetooth.enable = false;
@@ -15,6 +30,9 @@
       enable = true;
     };
   };
+
+  services.fstrim.enable = true;
+
   nix.buildCores = 16;
 }
 

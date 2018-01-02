@@ -8,7 +8,6 @@
     ../modules/development/gitkraken.nix
     ../modules/development/vim.nix
     ../modules/development/tilix.nix
-    ../modules/apps/skype.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -56,5 +55,7 @@
     unoconv
     atom
     ag
-    ];
+    keepassx-community
+    skypeforlinux
+  ];
 }
