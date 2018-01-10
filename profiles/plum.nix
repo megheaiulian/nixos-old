@@ -4,7 +4,8 @@
     ./plumelo.nix
     ../devices/spire.nix
     ../modules/development/upwork.nix
-    ../modules/desktops/sway/index.nix
+    ##../modules/desktops/sway/index.nix
+    ../services/tor.nix
   ];
 
   networking.hostName = "plumone";
@@ -27,6 +28,7 @@
     lastpass-cli
     epiphany
     ntfs3g
+    tree
   ];
 
   zramSwap = {

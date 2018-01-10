@@ -13,7 +13,7 @@
     initrd.availableKernelModules = [
       "hid-logitech-hidpp"
     ];
-    kernelPackages =  pkgs.linuxPackages_testing;
+    kernelPackages = pkgs.linuxPackages_testing;
     kernelParams = [
       "amdgpu.dc=1"
     ];
