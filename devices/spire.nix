@@ -14,11 +14,11 @@
       "hid-logitech-hidpp"
     ];
     kernelPackages = pkgs.linuxPackages_testing;
-    kernelParams = [
-      "amdgpu.dc=1"
-    ];
+    #kernelParams = [
+    #  "amdgpu.dc=1"
+    #];
     kernelModules = [
-      "amdgpu-pro"
+    #  "amdgpu-pro"
       "coretemp"
     ];
   };
@@ -34,5 +34,6 @@
   services.fstrim.enable = true;
 
   nix.buildCores = 16;
+  #services.xserver.videoDrivers = [ "nvidia" ];
 }
 

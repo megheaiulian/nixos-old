@@ -2,6 +2,7 @@
 {
   imports = [
     ./plumelo.nix
+    #../modules/development/ruby/index.nix
     ../devices/spire.nix
     ../modules/development/upwork.nix
     ##../modules/desktops/sway/index.nix
@@ -29,6 +30,7 @@
     epiphany
     ntfs3g
     tree
+    gtk-recordmydesktop
   ];
 
   zramSwap = {
