@@ -2,11 +2,9 @@
 {
   imports = [
     ./plumelo.nix
-    #../modules/development/ruby/index.nix
     ../devices/spire.nix
     ../modules/development/upwork.nix
-    ##../modules/desktops/sway/index.nix
-    ../services/tor.nix
+    #../services/tor.nix
   ];
 
   networking.hostName = "plumone";
@@ -30,7 +28,6 @@
     epiphany
     ntfs3g
     tree
-    gtk-recordmydesktop
   ];
 
   zramSwap = {
