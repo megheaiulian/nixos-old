@@ -18,14 +18,18 @@
       initialPassword = "andrei";
     };
   };
+  boot.kernelParams = [
+    "acpi_osi=!"
+  ]; 
   hardware.bumblebee = {
     enable = true;
     connectDisplay = true;
   };
+  
   services.xserver.displayManager.job.preStart = ''
     ${config.boot.kernelPackages.bbswitch}/bin/discrete_vga_poweron
   '';
-  
+
   environment.systemPackages = with pkgs; [
     transmission_gtk
     epiphany
