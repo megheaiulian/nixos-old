@@ -19,11 +19,11 @@
       kodi.enable = true; 
     };
   };
-  
+
   services.gnome3 = {
     gnome-documents.enable = false;
     gnome-user-share.enable = false;
     gnome-online-miners.enable = false;
-    gnome-keyring.enable = true; 
+    gnome-keyring.enable = true;
   };
 }

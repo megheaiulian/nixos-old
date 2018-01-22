@@ -4,7 +4,6 @@
     ./plumelo.nix
     ../devices/spire.nix
     ../modules/development/upwork.nix
-    #../services/tor.nix
   ];
 
   networking.hostName = "plumone";
