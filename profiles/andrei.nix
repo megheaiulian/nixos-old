@@ -19,6 +19,12 @@
     };
   };
 
+  services.xserver.videoDrivers = [ "nvidia" ];
+  
+  boot = {
+    kernelPackages = pkgs.linuxPackages_4_14;
+  };
+
   environment.systemPackages = with pkgs; [
     transmission_gtk
     epiphany
