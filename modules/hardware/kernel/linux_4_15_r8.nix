@@ -19,35 +19,8 @@
     };
   })];
 
-  powerManagement = {
-    enable = true;
-  };
-
-  fileSystems."/".options = [
-    "noatime"
-    "nodiratime"
-  ];
 
   boot = {
-    initrd.availableKernelModules = [
-      "hid-logitech-hidpp"
-    ];
     kernelPackages = pkgs.linuxPackagesFor pkgs.linux_4_15_r8;
-    kernelModules = [
-      "coretemp"
-    ];
   };
-
-  hardware = {
-    cpu.intel.updateMicrocode = true;
-    bluetooth.enable = false;
-    pulseaudio = {
-      enable = true;
-    };
-  };
-
-  services.fstrim.enable = true;
-
-  nix.buildCores = 16;
 }
-

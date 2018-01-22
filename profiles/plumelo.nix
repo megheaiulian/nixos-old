@@ -1,13 +1,15 @@
 { config, lib, pkgs, ... }:
 {
   imports = [
-    ../modules/desktops/gnome.nix
-    ../modules/development/vagrant.nix
-    ../modules/development/lxc.nix
-    ../modules/development/lxd/lxd.nix
-    ../modules/development/gitkraken.nix
-    ../modules/development/vim.nix
-    ../modules/development/tilix.nix
+    # all new pkgs and/or overlays
+    ../pkgs/all.nix
+
+    # config
+    ../modules/services/X11/gnome3.nix 
+    ../modules/virtualisation/lxc.nix
+    ../modules/virtualisation/lxd.nix
+    ../modules/virtualisation/vagrant.nix
+    ../modules/hardware/ssd.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -20,14 +22,22 @@
 
   time.timeZone = "Europe/Bucharest";
 
-  boot.kernel.sysctl = {
-    "vm.swappiness" = 10;
+  powerManagement = {
+    enable = true;
   };
 
   programs = {
     tmux.enable = true;
     fish.enable = true;
     java.enable = true;
+  };
+
+  hardware = {
+    pulseaudio = {
+      enable = true;
+    };
+    cpu.intel.updateMicrocode = true;
+    cpu.amd.updateMicrocode = true;
   };
 
   environment.systemPackages = with pkgs; [
@@ -54,8 +64,12 @@
     gptfdisk
     unoconv
     atom
+    vim_plum
+    gitkraken
     ag
     keepassx-community
     skypeforlinux
   ];
+
+  users.defaultUserShell = "/run/current-system/sw/bin/fish";
 }

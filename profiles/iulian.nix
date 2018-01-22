@@ -2,34 +2,38 @@
 {
   imports = [
     ./plumelo.nix
-    ../devices/yoga2-pro.nix
-    ../modules/development/upwork.nix
-    ../modules/desktops/sway/index.nix
+    ../modules/hardware/kernel/linux_4_15_r8.nix
   ];
 
   networking.hostName = "plumone";
 
   users = {
-    defaultUserShell = "/run/current-system/sw/bin/fish";
     groups.iulian = {
       gid = 1000;
     };
     users.iulian = {
       isNormalUser = true;
       uid = 1000;
-      extraGroups = ["iulian" "wheel" "disk" "audio" "video" "networkmanager" "systemd-journal" "lxd" "sway"];
+      extraGroups = ["iulian" "wheel" "disk" "audio" "video" "networkmanager" "systemd-journal" "lxd"];
       initialPassword = "iulian";
     };
   };
 
   environment.systemPackages = with pkgs; [
     transmission_gtk
-    lastpass-cli
     epiphany
+    ntfs3g
+    tree
   ];
 
-  zramSwap = {
-    enable    = true;
-    priority  = 6;
+  boot = {
+    initrd.availableKernelModules = [
+      "hid-logitech-hidpp"
+    ];
+    kernelModules = [
+      "coretemp"
+    ];
   };
+
+  nix.buildCores = 16;
 }

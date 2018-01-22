@@ -2,35 +2,28 @@
 {
   imports = [
     ./plumelo.nix
-    ../devices/spire.nix
-    ../modules/development/upwork.nix
+    ##../devices/spire.nix
   ];
 
-  networking.hostName = "plumone";
+  networking.hostName = "andreiWS";
 
   users = {
-    defaultUserShell = "/run/current-system/sw/bin/fish";
-    groups.iulian = {
+    groups.andrei = {
       gid = 1000;
     };
-    users.iulian = {
+    users.andrei = {
       isNormalUser = true;
       uid = 1000;
       extraGroups = ["iulian" "wheel" "disk" "audio" "video" "networkmanager" "systemd-journal" "lxd" "sway"];
-      initialPassword = "iulian";
+      initialPassword = "andrei";
     };
   };
 
   environment.systemPackages = with pkgs; [
     transmission_gtk
-    lastpass-cli
     epiphany
     ntfs3g
     tree
   ];
-
-  zramSwap = {
-    enable    = true;
-    priority  = 6;
-  };
 }
+
