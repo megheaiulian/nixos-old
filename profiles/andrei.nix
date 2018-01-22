@@ -20,7 +20,7 @@
   };
 
   services.xserver.videoDrivers = [ "nvidia" ];
-  
+
   boot = {
     kernelPackages = pkgs.linuxPackages_4_14;
   };
@@ -31,5 +31,6 @@
     ntfs3g
     tree
   ];
+  nix.buildCores = 4;
 }
 
