@@ -16,4 +16,3 @@
   # sudo lxc network set lxdbr0 ipv4.address 10.0.4.1/24
   # And add your user to lxd group
 }
-

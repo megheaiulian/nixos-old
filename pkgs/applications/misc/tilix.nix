@@ -12,8 +12,4 @@
       };
     });
   })];
-
-  environment.systemPackages = with pkgs; [
-    tilix
-  ];
 }

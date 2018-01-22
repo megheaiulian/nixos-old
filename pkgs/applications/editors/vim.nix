@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 {
   nixpkgs.overlays = [( self: super: {
-    pvim = super.vim_configurable.customize {
+    vim_plum = super.vim_configurable.customize {
       name = "vim";
       vimrcConfig.customRC = ''
         set expandtab
@@ -13,9 +13,5 @@
       '';
     };
   })];
-
-  environment.systemPackages = with pkgs; [
-    pvim
-  ];
-
 }
+

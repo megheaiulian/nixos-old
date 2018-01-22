@@ -27,3 +27,4 @@
     gnome-keyring.enable = true;
   };
 }
+
