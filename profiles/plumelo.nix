@@ -65,6 +65,7 @@
     unoconv
     atom
     vim_plum
+    gitAndTools.tig
     gitkraken
     ag
     keepassx-community
